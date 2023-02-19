@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  p {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .co {
+    display: flex;
+  }
+  
+  .co .box {
+    width: 100px;
+    height: 100px;
+    background-color: #ff7a7a;
+    border: solid 2px black;
+  }
