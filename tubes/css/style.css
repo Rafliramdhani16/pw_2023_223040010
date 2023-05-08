@@ -1,0 +1,18 @@
+
+.navbar-brand{
+    margin-left: 10px;
+    font-size: 40px;
+    font-family: 'Saira', sans-serif;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #333;
+    padding: 50px;
+    text-align: center;
+    margin-top: 200px;
+  }
+  footer small {
+    color: #fff;
+  }
