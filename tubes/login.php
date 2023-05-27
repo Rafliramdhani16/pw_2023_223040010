@@ -1,3 +1,18 @@
+<?php 
+session_start();
+// logika ketika kita sudah masuk login dan kita tidak double login
+if(isset($_SESSION['login']))
+{
+  header("Location: page.php");
+  exit;
+}
+
+require 'functions.php';
+// ketika tombol ditekan
+if(isset($_POST['login'])){
+  $login = login($_POST);
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,25 +24,33 @@
     
 </head>
   <body>
+
     
   <div class="global-container">
     <div class="card login-form">
+
         <div class="card-body">
             <h1 class="card-title text-center">LOGIN</h1>
-            <form>
+            <form method="POST" action="">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputUsername1" class="form-label">Username</label>
+    <input type="Text" name="username"   autofocus autocomplete="off" class="form-control" id="exampleInputUsername">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <label class="form-check-label" for="exampleCheck1">Ingat</label>
+    <a href="register.php" style="margin-left:20px;">Registrasi </a>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+<?php if(isset($login['error'])):  ?>
+<p><?=$login['pesan']; ?></p>
+<?php endif; ?>
+  <button type="submit" name="login" class="btn btn-primary">Lanjut</button>
+  <div>
+  </div>
 </form>
         </div>
     </div>

@@ -1,3 +1,17 @@
+<?php 
+require ('functions.php');
+
+if(isset($_POST['registrasi'])){
+  if(registrasi($_POST) > 0){
+    echo "<script>
+      alert('user baru berhasil di tambahkan ');
+      document.location.href = 'login.php';
+      </script>";
+  } else {
+    echo'user gagal ditambahakan!';
+  }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,24 +28,20 @@
     <div class="card login-form">
         <div class="card-body">
             <h1 class="card-title text-center">Registrasi</h1>
-            <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <form action="" method="POST">
+            <div class="mb-3">
+    <label for="exampleInputUsername1" class="form-label">Username</label>
+    <input type="Text" name="username"   autofocus autocomplete="off" class="form-control" id="exampleInputUsername" required>
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Password</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password2" class="form-control" id="exampleInputPassword1" required>
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" name="registrasi"class="btn btn-primary">Submit</button>
 </form>
         </div>
     </div>

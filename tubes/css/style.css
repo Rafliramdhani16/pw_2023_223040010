@@ -16,3 +16,33 @@ footer {
   footer small {
     color: #fff;
   }
+.jarak{
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.card{
+  border-width: 3px;
+}
+.jarak2{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.underline{
+   margin-left: 200px;
+    border-bottom: 1px solid black;
+  margin-right: 1100px;
+}
+.jarak3{
+  margin-left: 100px;
+  margin-left: 100px;
+}
+/* cover */
+.bg{
+ background-color: #1c3a77;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
