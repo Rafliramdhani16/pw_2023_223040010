@@ -8,7 +8,10 @@ if(isset($_POST['registrasi'])){
       document.location.href = 'login.php';
       </script>";
   } else {
-    echo'user gagal ditambahakan!';
+    echo"<script>
+    alert('user gagal ditambahkan ');
+    document.location.href = 'registrasi.php';
+    </script>";
   }
 }
 ?>
@@ -31,17 +34,24 @@ if(isset($_POST['registrasi'])){
             <form action="" method="POST">
             <div class="mb-3">
     <label for="exampleInputUsername1" class="form-label">Username</label>
-    <input type="Text" name="username"   autofocus autocomplete="off" class="form-control" id="exampleInputUsername" required>
+    <input type="Text" name="username" autofocus autocomplete="off" class="form-control" id="exampleInputUsername" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    <input type="password" name="password1" class="form-control" id="exampleInputPassword1"  required>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
     <input type="password" name="password2" class="form-control" id="exampleInputPassword1" required>
   </div>
+  <span>
   <button type="submit" name="registrasi"class="btn btn-primary">Submit</button>
+  <a href="login.php" class="btn btn-primary">Masuk</a>
+  </span>
 </form>
         </div>
     </div>

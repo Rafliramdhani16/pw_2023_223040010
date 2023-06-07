@@ -1,4 +1,7 @@
-
+body, html {
+  max-width: 100%;
+  width: 100%;
+}
 .navbar-brand{
     margin-left: 10px;
     font-size: 40px;
@@ -16,27 +19,33 @@ footer {
   footer small {
     color: #fff;
   }
-.jarak{
-  margin-top: 20px;
-  margin-left: 200px;
-  margin-right: 200px;
-}
+
 .card{
   border-width: 3px;
 }
-.jarak2{
-  margin-left: 20px;
-  margin-right: 20px;
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Menambahkan flex-wrap: wrap agar card terlipat saat mode mobile */
 }
-.underline{
-   margin-left: 200px;
-    border-bottom: 1px solid black;
-  margin-right: 1100px;
+
+.col-sm-3 {
+  flex: 0 0 28%;
+  max-width: 28%;
+  padding: 0 15px;
 }
-.jarak3{
-  margin-left: 100px;
-  margin-left: 100px;
+
+/* Mengubah tampilan pada mode mobile dengan lebar layar kurang dari atau sama dengan 767px */
+@media (max-width: 767px) {
+  .col-sm-3 {
+      flex: 0 0 100%;
+      max-width: 90%;
+      margin-bottom: 15px;
+  }
 }
+
+
 /* cover */
 .bg{
  background-color: #1c3a77;
@@ -45,4 +54,58 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.card-detail{
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.tbl{
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: #333;
+}
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.center-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.box-md-5 {
+  background-color: #ffffff;
+  width: 200px; /* Sesuaikan ukuran kotak di sini */
+  height: 200px; /* Sesuaikan ukuran kotak di sini */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.size-fa{
+  font-size: 200px;
+  color: #87CEFA;;
+}
+.fa-pager{
+  font-size: 200px;
+  color: #87CEFA;;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: left;
 }

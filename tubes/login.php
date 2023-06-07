@@ -48,7 +48,7 @@ if(isset($_POST['login'])){
 <?php if(isset($login['error'])):  ?>
 <p><?=$login['pesan']; ?></p>
 <?php endif; ?>
-  <button type="submit" name="login" class="btn btn-primary">Lanjut</button>
+  <button type="submit" name="login" class="btn btn-primary">Masuk</button>
   <div>
   </div>
 </form>

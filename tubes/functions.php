@@ -6,15 +6,21 @@ function koneksi()
 
 function query($query)
 {
-    $conn = Koneksi();
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+  $conn = koneksi();
 
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
+  $result = mysqli_query($conn, $query);
 
-    return $rows;
+  // jika hasilnya hanya 1 data
+  if (mysqli_num_rows($result) == 1) {
+    return mysqli_fetch_assoc($result);
+  }
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;                                                           
 }
 function login($data)
 {
@@ -26,9 +32,10 @@ function login($data)
   // cek dulu username 
   if ($user = query("SELECT * FROM user WHERE username = '$username'")) {
     // cek password
-    if (password_verify($password, $user[0]['password'])) {
+    if (password_verify($password, $user['password'])) {
       // set session
       $_SESSION['login'] = true;
+      $_SESSION['id']= $user['id'];
 
       header("Location: page.php");
       exit;
@@ -43,13 +50,15 @@ function registrasi($data){
   $conn = koneksi();
   
   $username= htmlspecialchars(strtolower($data['username']));
+  $email = htmlspecialchars(strtolower($data['email']));
   $password1= mysqli_real_escape_string($conn, $data['password1']);
   $password2= mysqli_real_escape_string($conn, $data['password2']);
+  $gambar = ($data['gambar']);
 
   // jika password atau apapun kosong
-  if(empty($username) || empty($password1) || empty($password2)){
+  if(empty($username) || empty($password1) || empty($password2) || empty($email)){
     echo "<script>
-    alert('username atau passsword tidak boleh kosong!');
+    alert('Tolong isi semuanya');
     document.location.href = 'registrasi.php';
     </script>";
     return false;
@@ -85,12 +94,169 @@ if(query("SELECT * FROM user WHERE username = '$username'")){
   // insert ke tabel user
   $query = "INSERT INTO user
               VALUES
-            (null, '$username', '$password_baru')
+            (NULL, '$username', '$email', '$password_baru', '$gambar' )
           ";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
 }
 
-// data detail
+function tambah($data)
+{
+  $conn = koneksi();
+
+  
+  $judul = htmlspecialchars($data['judul']);
+  $kategori = htmlspecialchars($data['kategori']);
+  $waktu = htmlspecialchars($data['waktu']);
+  $isi = htmlspecialchars($data['isi']);
+  
+// upload gambar
+$gambar = upload();
+if(!$gambar){
+  return false;
+}
+  $query = "INSERT INTO
+              detail
+            VALUES
+            (NULL, '$gambar', '$judul',  '$waktu', '$isi', '$kategori');
+          ";
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+function upload(){
+  $namaFile = $_FILES['gambar']['name'];
+  $ukuranfile = $_FILES['gambar']['size'];
+  $error = $_FILES['gambar'] ['error'];
+  $tmpName = $_FILES['gambar']['tmp_name'];
+  // cek apakah gambar tidak di upload
+  if($error === 4){
+    echo "<script>
+    alert('pilih gambar terlebih dahulu!');
+    </script>";
+    return false;
+  }
+  // memastikan yang di upload hanya gambar
+  $ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'webp'];
+  $ekstensiGambar = explode('.', $namaFile);
+  $ekstensiGambar = strtolower(end($ekstensiGambar));
+  // kiri true kanan false
+  if(!in_array($ekstensiGambar, $ekstensiGambarValid)){
+    echo "<script>
+    alert('yang anda upload bukan gambar');
+    </script>";
+    return false;
+  }
+  // cek jika ukuran terlalu besar
+    if($ukuranfile > 2000000 ){
+      echo "<script>
+      alert('ukuran gambar terlalu besar');
+      </script>";
+      return false;
+    }
+    // lolos pengecekan, gambar siap di upload
+    // generate nama gambar baru
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .=$ekstensiGambar;
+
+// .= adalah ditempel dan dirangkai dengan .
+
+    move_uploaded_file($tmpName, 'img/'. $namaFileBaru);
+    return $namaFile;
+
+}
+
+
+function delete($id)
+{
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM detail WHERE id= $id") or die (mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+
+function cari($keyword) {
+  $conn = koneksi();
+  $query = "SELECT * FROM detail
+            WHERE gambar LIKE '%$keyword%' OR
+            judul LIKE '%$keyword%' OR
+            list LIKE '%$keyword%' OR
+            waktu LIKE '%$keyword%' OR
+            isi LIKE '%$keyword%' OR
+            list LIKE '%$keyword%'";
+
+  $result = mysqli_query($conn, $query);
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+      $rows[] = $row;
+  }
+  return $rows;
+}
+function edit($data)
+{
+  $conn = koneksi();
+  
+  $id = $data['id'];
+  
+  // cek apakah user pilih gambar baru atau tidak
+
+  $judul = htmlspecialchars($data['judul']);
+  $kategori = ($data['kategori']);
+  $waktu = htmlspecialchars($data['waktu']);
+  $isi = htmlspecialchars($data['isi']);
+  $gambarLama = ($data['gambarLama']);
+  
+  
+  if($_FILES['gambar']['error'] === 4){
+    $gambar = $gambarLama;
+  }else{
+    $gambar = upload();
+  }
+
+  $query = "UPDATE detail SET
+            gambar = '$gambar',
+            judul = '$judul',
+            waktu = '$waktu',
+            isi = '$isi',
+            id_kategori = '$kategori'
+            WHERE id =$id";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+function ubah($data)
+{
+  $conn = koneksi();
+  
+  $id = $data['id'];
+  
+  // cek apakah user pilih gambar baru atau tidak
+
+  $username = htmlspecialchars($data['username']);
+  $email = htmlspecialchars($data['email']);
+  $gambarLama = ($data['gambarLama']);
+
+
+  
+  if (
+    $_FILES['gambar']['error'] === 4
+) {
+    $gambar = $gambarLama;
+} else {
+    $gambar = upload();
+}
+
+  $query = "UPDATE user SET
+            gambar = '$gambar',
+            username = '$username',
+            email = '$email',
+            WHERE id =$id";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
 
 ?>
