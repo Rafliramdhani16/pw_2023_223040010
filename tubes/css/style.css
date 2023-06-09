@@ -44,6 +44,13 @@ footer {
       margin-bottom: 15px;
   }
 }
+@media (max-width: 767px) {
+  .populer {
+      flex: 0 0 100%;
+      max-width: 90%;
+      margin-bottom: 15px;
+  }
+}
 
 
 /* cover */
@@ -118,4 +125,42 @@ td {
   font-weight: bold;
   padding-top: 30px;
   padding-bottom: 50px;
+}
+a:hover {
+  color: rgb(43, 115, 249); /* Ganti dengan warna yang Anda inginkan */
+  cursor: pointer; /* Ganti dengan jenis kursor yang Anda inginkan */
+}
+.link-color:hover {
+  color: rgb(43, 115, 249); /* Ganti dengan warna yang Anda inginkan */
+  cursor: pointer; /* Ganti dengan jenis kursor yang Anda inginkan */
+}
+.text-left {
+  float: left;
+}
+
+.text-right {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 767px) {
+  .text-left,
+  .text-right {
+      float: none;
+      width: 100%;
+  }
+}
+.border {
+  text-align: center;
+  border-width: 4px solid; /* Menambahkan border */
+  padding: 10px; /* Padding agar border terlihat lebih jelas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.card{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

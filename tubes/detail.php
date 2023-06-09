@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require('navigasi.php');
 require('functions.php');
 
@@ -51,8 +52,7 @@ if(isset($_POST['cari'])){
    </div> -->
    <!-- akhir cover -->
    <p class="p1">Recent</p>
-   <br>
-   <br>
+
    <div class="row">
   <div class="col-md-6">
     <form action="" method="GET">
@@ -73,33 +73,31 @@ if(isset($_POST['cari'])){
 
 
 
-  <div id="search-container">
-     <?php
-    foreach ($detail as $d) : ?>
-<div class="card mb-3 card-detail">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <input type="hidden" name="id" >
-      <img src="asset/<?=$d['gambar']; ?>" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <a href="isi_detail.php?id=<?=$d['id']; ?>" class="btn"><?=$d['judul']; ?></a>
-        <div>
-        <li>
-          <?=$d['kategori']; ?>
-          </li>
-          <span class="card-text"><small class="text-body-secondary"><?=$d['waktu']; ?></small></span>
+<div id="search-container">
+    <?php foreach ($detail as $d) : ?>
+      <div class="card mb-3 card-detail">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <input type="hidden" name="id">
+            <img src="asset/<?=$d['gambar']; ?>" class="img-fluid rounded-start" alt="...">
           </div>
-        <p class="card-text"><?=$d['isi']; ?></p>
-        <br>
-
+          <div class="col-md-8">
+            <div class="card-body">
+            <a href="isi_detail.php?id=<?=$d['id']; ?>" class="btn link-color"><?=$d['judul']; ?></a>
+              <div>
+                <li>
+                  <?=$d['kategori']; ?>
+                  <span class="card-text mx-1"><small class="text-body-secondary"><?=$d['waktu']; ?></small></span>
+                </li>
+              </div>
+              <p class="card-text"><?=$d['isi']; ?></p>
+              <br>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    <?php endforeach; ?>
   </div>
-</div>
-<?php endforeach; ?>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
   </body>

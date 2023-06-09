@@ -347,7 +347,6 @@ function cari($keyword) {
   $conn = koneksi();
   $query = "SELECT * FROM detail NATURAL JOIN kategori
             WHERE judul LIKE '%$keyword%' OR
-            judul LIKE '%$keyword%' OR
             kategori LIKE '%$keyword%' OR
             waktu LIKE '%$keyword%'";
 

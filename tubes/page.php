@@ -134,38 +134,39 @@ $page = query("SELECT * FROM tampilan");
 <!-- akhir referensi -->
 <!-- bagian populer -->
 <section id="populer">
-<p class="p1">Populer</p>
+  <p class="p1">Populer</p>
 
-<div class="row justify-content-center align-items-center">
-<?php
-        $count = 1; // Variabel hitungan
-        foreach ($page as $p) :
-            if ($count >= 7 && $count <= 10) { // Tampilkan query ke-4 hingga ke-6
-                ?>
-    <div class="col-md-5">
-        <div class="card mt-4 mt-md-0 mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="asset/<?=$p['gambar']; ?>" class="card-img" alt="tesla" style="60">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"><?=$p['judul']; ?></h5>
-                        <p class="card-text"><?=$p['isi']; ?></p>
-                        <br>
-                        <a href="isi_page.php?id=<?=$p['id']; ?>" class="btn btn-primary mt-3">Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="row justify-content-center align-items-center">
     <?php
-            }
-            $count++; // Increment hitungan
-        endforeach;
-        ?>
-</div>
+    $count = 1; // Variabel hitungan
+    foreach ($page as $p) :
+      if ($count >= 7 && $count <= 10) { // Tampilkan query ke-4 hingga ke-6
+    ?>
+        <div class="col-md-5 mb-4 populer"> <!-- Tambahkan kelas "mb-4" di sini -->
+          <div class="card mt-4 mt-md-0 mb-3 ">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="asset/<?=$p['gambar']; ?>" class="card-img" alt="tesla" style="60">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><?=$p['judul']; ?></h5>
+                  <p class="card-text"><?=$p['isi']; ?></p>
+                  <br>
+                  <a href="isi_page.php?id=<?=$p['id']; ?>" class="btn btn-primary mt-3">Selengkapnya</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <?php
+      }
+      $count++; // Increment hitungan
+    endforeach;
+    ?>
+  </div>
 </section>
+
 
 
 

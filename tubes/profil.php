@@ -47,52 +47,52 @@ if (isset($_POST['edit_user'])) {
             <aside class="col-lg-3 col-xl-2 mt-3">
                 <nav class="nav flex-lg-column nav-pills mb-4 d-sm-none d-lg-block">
                     <a class="nav-link active  my-2 mx-2" href="#">Profil</a>
-                    
                     <a class="nav-link" href="logout.php">Log out</a>
                 </nav>
             </aside>
-            
+
             <main class="col-lg-9 mt-4">
                 <article class="card">
                     <div class="card-body">
                         <form action="" enctype="multipart/form-data" method="POST">
                             <input type="hidden" name="id" value="<?= $user['id']; ?>">
                             <input type="hidden" name="gambarLama" value="<?= $user['gambar']; ?>">
-                            <input type="hidden" name="password" value="<?=$user['password']; ?>">
+                            <input type="hidden" name="password" value="<?= $user['password']; ?>">
                             <div class="row">
-                            <aside class="col-lg-4">
-    <figure class="text-lg-center">
-        <h6 class="mt-3">Foto</h6>
-        <?php if ($user['gambar']) { ?>
-            <img class="img-lg img-avatar mt-3" src="asset/<?php echo $user['gambar']; ?>" alt="User Photo" width="120">
-        <?php } else { ?>
-            <img class="img-lg img-avatar mt-3" src="img/default.png" alt="User Photo" width="120">
-        <?php } ?>
-        <br>
-        <input type="file" class="form-control mt-2" name="gambar" id="gambar" onchange="previewImage();">
-    </figure>
-</aside>
-
-                                </aside> 
+                                <aside class="col-lg-4">
+                                    <figure class="text-lg-center">
+                                        <h6 class="mt-3">Foto</h6>
+                                        <?php if ($user['gambar']) { ?>
+                                            <img class="img-lg img-avatar mt-3" src="asset/<?php echo $user['gambar']; ?>" alt="User Photo" width="120">
+                                        <?php } else { ?>
+                                            <img class="img-lg img-avatar mt-3" src="img/default.png" alt="User Photo" width="120">
+                                        <?php } ?>
+                                        <br>
+                                        <input type="file" class="form-control mt-2" name="gambar" id="gambar" onchange="previewImage();">
+                                    </figure>
+                                </aside>
                                 <div class="col-lg-8">
                                     <div class="row gx-3">
                                         <div class="col-lg-12 mb-3">
                                             <label class="form-label">Username</label>
                                             <input class="form-control" name="username" id="username" type="text" value="<?= $user['username']; ?>">
-                                        </div> 
+                                        </div>
                                         <div class="col-lg-12 mb-3">
                                             <label class="form-label">Email</label>
                                             <input class="form-control" name="email" id="email" type="text" value="<?= $user['email']; ?>">
-                                        </div> 
-                                    </div> 
+                                        </div>
+                                    </div>
                                     <button type="submit" name="edit_user" class="btn btn-primary mt-2">Simpan Perubahan</button>
-                                </div> 
+                                </div>
                             </div>
                         </form>
-                    </div> 
-                </article> 
+                    </div>
+                </article>
             </main>
-        </div
+        </div>
+    </div>
+</section>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </body>
 </html>
