@@ -1,14 +1,14 @@
 <?php 
 require'../functions.php';
-$keyword = query($detail);
-$query = ("SELECT * FROM detail");
-
 $detail = cari($_GET['keyword']);
 ?>
 
-<?php $i=1;
+
+<?php if($detail):
+   ?>
+<?php  
 foreach ($detail as $d) : ?>
-<div class="card mb-3">
+<div class="card mb-3 card-detail">
   <div class="row g-0">
     <div class="col-md-4">
       <input type="hidden" name="id" >
@@ -16,10 +16,10 @@ foreach ($detail as $d) : ?>
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <a href="isi.php?id=<?=$d['id']; ?>" class="btn"><?=$d['judul']; ?></a>
+        <a href="isi_detail.php?id=<?=$d['id']; ?>" class="btn"><?=$d['judul']; ?></a>
         <div>
         <li>
-          <?=$d['list']; ?>
+          <?=$d['kategori']; ?>
           </li>
           <span class="card-text"><small class="text-body-secondary"><?=$d['waktu']; ?></small></span>
           </div>
@@ -30,5 +30,15 @@ foreach ($detail as $d) : ?>
     </div>
   </div>
 </div>
-
 <?php endforeach; ?>
+<?php 
+else : 
+?>
+<div class="row">
+  <div class="col-md-6">
+  <div class="alert alert-danger" role="alert">
+  Data tidak ditemukan
+</div>
+  </div>
+</div>
+<?php endif; ?>

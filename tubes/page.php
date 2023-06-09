@@ -21,7 +21,7 @@ $page = query("SELECT * FROM tampilan");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body class="overflow-x-hidden">
        <!-- banner -->
        <div class="jumbotron">
   <img src="asset/baner.jpg" class="img-fluid mt-5" alt="Banner">
@@ -30,23 +30,26 @@ $page = query("SELECT * FROM tampilan");
 
     <!-- Beranda -->
   <!-- sementara log out -->
-
-    <div class="row justify-content-center">
-    <div class="card mt-4 mb-3 m-3 card1 ">
-  <div class="row no-gutters ">
-  <div class="col-md-4 ">
-      <img src="asset/7.webp" class="img-fluid rounded-start" alt="tesla">
+<section id="beranda">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 mt-4">
+        <div class="card mt-4 mb-3 m-3 card1">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="asset/7.webp" class="img-fluid rounded-start" alt="tesla">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Pengenalan Pemograman</h5>
+                        <p class="card-text">Pemrograman adalah proses membuat program di komputer. Pembuatan program ini bisa berupa website, software, aplikasi android, dan sebagainya.</p>
+                        <a href="pengenelan.php" class="btn btn-primary">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Pengenalan Pemograman</h5>
-        <p class="card-text"> pemrograman adalah proses membuat program di komputer. Pembuatan program ini bisa berupa website, software, aplikasi android, dan sebagainya.</p>
-        <a href="pengenelan.php" class="btn btn-primary">Selengkapnya</a>
-      </div>
-    </div>
-  </div>
-    </div>
-    </div>
+</div>
+</section>
 
 
     <!-- part2 -->
@@ -96,7 +99,7 @@ $page = query("SELECT * FROM tampilan");
         endforeach;
         ?>
     </div>
-</form>
+
 
 
 <!-- part3 -->
@@ -107,28 +110,32 @@ $page = query("SELECT * FROM tampilan");
    </div>
 
    <!-- bagian Referensi -->
-
-
-   <div class="card mb-3 mt-5"  >
-  <div class="row no-gutters ">
-    <div class="col-md-4">
-      <img src="asset/learn.webp" class="img-fluid rounded-start" alt="...">
+   <div class="row justify-content-center">
+    <div class="col-lg-10 mt-4">
+        <div class="card mt-4 mb-3 m-3 card1">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="asset/learn.webp" class="img-fluid rounded-start" alt="tesla">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Kalo Mau Mulai Darimana Ya?</h5>
+                        <p class="card-text">Kalian bisa belajar dimana dimana saja dan mencari referensi namun jika masih binggung kalian bisa melihat channel-channel youtube yang membahas tentang pemograman</p>
+                        <a href="pengenelan.php" class="btn btn-primary">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-7">
-      <div class="card-body">
-        <h5 class="card-title">Kalo Mau Mulai Darimana Ya?</h5>
-        <p class="card-text mt-3">Kalian bisa belajar dimana dimana saja dan mencari referensi namun jika masih binggung kalian bisa melihat channel-channel youtube yang membahas tentang pemograman</p>
-        <a href="#" class="btn btn-primary mt-2">lihat selengkapnya</a>
-      </div>
-    </div>
-  </div>
 </div>
+
+
 
 <!-- akhir referensi -->
 <!-- bagian populer -->
+<section id="populer">
+<p class="p1">Populer</p>
 
-<h1 class="">Populer</h1>
-<br>
 <div class="row justify-content-center align-items-center">
 <?php
         $count = 1; // Variabel hitungan
@@ -158,15 +165,15 @@ $page = query("SELECT * FROM tampilan");
         endforeach;
         ?>
 </div>
-
+</section>
 
 
 
 <!-- akhir populer -->
 <!-- teraru -->
-<br>
-<h1 class="underline">Terbaru</h1>
-<br>
+
+<section id="terbaru">
+<p class="p1">Terbaru</p>
 <div class="row justify-content-center mt-3">
 <?php
         $count = 1; // Variabel hitungan
@@ -190,6 +197,8 @@ $page = query("SELECT * FROM tampilan");
         endforeach;
         ?>
 </div>
+</form>
+</section>
    <!-- footer -->
    <footer>
         <div class="container-3">

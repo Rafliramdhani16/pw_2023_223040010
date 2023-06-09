@@ -1,13 +1,11 @@
 <?php 
+
+session_start();
+
+
 require('navigasi.php');
 require('functions.php');
 
-$id = $_GET['id'];
-
-
-if(isset($_POST['cari'])){
-  $detail = cari ($_POST['keyword']);
-}
 
 
 $detail=query("SELECT * FROM detail NATURAL JOIN kategori");
@@ -24,6 +22,7 @@ $detail=query("SELECT * FROM detail NATURAL JOIN kategori");
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <section class="padding-y bg-light" style="height: 100%;">
     <br>
     <br>
     <br>
@@ -57,7 +56,15 @@ $detail=query("SELECT * FROM detail NATURAL JOIN kategori");
   </div>
 </div>
 <?php endforeach; ?>
-<a href="tambah.php" class="btn btn-primary ">Tambah Data</a>
+<br>
+<div style="text-align: center;">
+  <a href="tambah.php" class="btn btn-primary">Tambah Data</a>
+</div>
+<br>
+    </form>
+    </section>
+<!-- tes -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>

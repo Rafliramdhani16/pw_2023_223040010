@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require('navigasi.php');
 require ('functions.php');
 $p=query("SELECT * FROM tampilan");

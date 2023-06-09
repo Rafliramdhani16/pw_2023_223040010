@@ -4,7 +4,7 @@ require ('functions.php');
 if(isset($_POST['registrasi'])){
   if(registrasi($_POST) > 0){
     echo "<script>
-      alert('user baru berhasil di tambahkan ');
+      alert('user baru berhasil ditambahkan ');
       document.location.href = 'login.php';
       </script>";
   } else {
@@ -31,7 +31,9 @@ if(isset($_POST['registrasi'])){
     <div class="card login-form">
         <div class="card-body">
             <h1 class="card-title text-center">Registrasi</h1>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="gambar" name="gambar">
+            <input type="hidden" id="id_role" name="id_role" value="2">
             <div class="mb-3">
     <label for="exampleInputUsername1" class="form-label">Username</label>
     <input type="Text" name="username" autofocus autocomplete="off" class="form-control" id="exampleInputUsername" required>

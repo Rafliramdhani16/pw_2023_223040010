@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Saira&display=swap" rel="stylesheet">
   </head>
   <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
@@ -23,16 +27,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="user.php">Beranda</a>
+          <a class="nav-link active" aria-current="page" href="#beranda">Beranda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Refenrensi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Terpopuler</a>
+          <a class="nav-link" href="#populer">Populer</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Terbaru</a>
+          <a class="nav-link" href="#terbaru">Terbaru</a>
         </li>
       </ul>
       <div class="container">
@@ -43,7 +47,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="profil.php">Profil</a>
+<?php if( $_SESSION['role']=== 'admin'): ?>
                 <a class="dropdown-item" href="dashboard_admin.php">Dashboard</a>
+<?php endif ;?>
                 <a class="dropdown-item" href="login.php">Login</a>
                 <a class="dropdown-item" href="logout.php">Log Out</a>
             </div>

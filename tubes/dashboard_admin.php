@@ -1,4 +1,6 @@
 <?php 
+session_start();
+ 
 require ('navigasi.php');
 require ('functions.php');
 ?>
@@ -12,33 +14,12 @@ require ('functions.php');
   <title>Dashboard</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/style.css">
-
-</head>
-<div class="order-lg-last flex-shrink-0">
-                      <a class="btn btn-success-light" href="login.php">Masuk </a>
-                      <a class="btn btn-light" href="register.php">Daftar </a>
-  
-                      <div class="nav-item dropdown">
-                          <a class="nav-link py-0 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="" alt="" class="icon-sm bg-gray rounded-circle me-2">
-                              <span></span>
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li> <a class="dropdown-item" href="profil_admin.php">Profil</a> </li>
-                              <li>
-                                  <hr class="dropdown-divider">
-                              </li>
-                              <li> <a class="dropdown-item" target="_blank" href="#">Email</a> </li>
-                              <li>
-                                  <hr class="dropdown-divider">
-                              </li>
-                              <li> <a class="dropdown-item" href="logout.php">Keluar</a> </li>
-                          </ul>
-                      </div>
 <body>
+  <br>
+
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-5 my-5">
+      <div class="col-md-5  mt-5">
           <a href="profil.php" class="btn center-icon">
             <div class="box-md-5">
               <div class="icon-container">
@@ -48,8 +29,8 @@ require ('functions.php');
             </div>
           </a>
       </div>
-      <div class="col-md-5 my-5">
-          <a href="user.php" class="btn center-icon">
+      <div class="col-md-5  mt-5">
+          <a href="dashboard_user.php" class="btn center-icon">
             <div class="box-md-5">
               <div class="icon-container">
               <i class="fa-regular fa-address-card size-fa"></i>
@@ -60,7 +41,7 @@ require ('functions.php');
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-5 my-5">
+      <div class="col-md-5  mt-5">
           <a href="dashboard_page.php" class="btn center-icon">
             <div class="box-md-5">
               <div class="icon-container">
@@ -70,7 +51,7 @@ require ('functions.php');
             </div>
           </a>
       </div>
-      <div class="col-md-5 my-5">
+      <div class="col-md-5 mt-5">
           <a href="dashboard_detail.php" class="btn center-icon">
             <div class="box-md-5">
               <div class="icon-container">
@@ -82,6 +63,7 @@ require ('functions.php');
       </div>
     </div>
   </div>
+
   <script src="https://kit.fontawesome.com/0cdc72137f.js" crossorigin="anonymous"></script>
   <!-- Bootstrap JS -->
 

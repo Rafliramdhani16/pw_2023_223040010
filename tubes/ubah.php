@@ -62,10 +62,7 @@ if (isset($_POST['edit'])) {
     <input type="text" class="form-control" name="isi" require value=<?=$d['isi']; ?>>
   </div>
 
-  <div class="mb-3">
-    <label  class="form-label">link</label>
-    <input type="text" class="form-control" name="link" require value=<?=$d['link']; ?>>
-  </div>
+
 
   <button type="submit" class="btn btn-primary" name="edit">ubah</button>
 </form>

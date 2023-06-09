@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require ('navigasi.php');
 require ('functions.php');
 
@@ -23,6 +24,7 @@ $user = query("SELECT * FROM user");
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
+          <th scope="col">gambar</th>
           <th scope="col">Nama</th>
           <th scope="col">Email</th>
           <th scope="col">Aksi</th>
@@ -33,11 +35,12 @@ $user = query("SELECT * FROM user");
         <?php foreach ($user as $s) : ?>
           <tr>
             <th scope="row"><?= $i; ?></th>
+            <td><img src="asset/<?= $s['gambar']; ?>" alt="" width="60"></td>
             <td><?= $s['username']; ?></td>
             <td><?= $s['email']; ?></td>
             <td>
-              <a href="ubah.php?id=<?= $s['id']; ?>" class="badge bg-warning text-decoration-none">Ubah</a>
-              <a href="hapus.php?id=<?= $s['id']; ?>" class="badge bg-danger text-decoration-none" onclick="return confirm('yakin dek')">Hapus</a>
+              <a href="ubah_user.php?id=<?= $s['id']; ?>" class="badge bg-warning text-decoration-none">Ubah</a>
+              <a href="delete_user.php?id=<?= $s['id']; ?>" class="badge bg-danger text-decoration-none" onclick="return confirm('yakin dek')">Hapus</a>
             </td>
           </tr>
           <?php $i++; ?>

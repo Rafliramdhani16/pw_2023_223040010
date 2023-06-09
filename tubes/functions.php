@@ -1,3 +1,161 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php 
 function koneksi()
 {
@@ -29,6 +187,7 @@ function login($data)
   $username = htmlspecialchars($data['username']);
   $password = htmlspecialchars($data['password']);
 
+
   // cek dulu username 
   if ($user = query("SELECT * FROM user WHERE username = '$username'")) {
     // cek password
@@ -36,7 +195,13 @@ function login($data)
       // set session
       $_SESSION['login'] = true;
       $_SESSION['id']= $user['id'];
-
+      // pembagian role
+      if(
+        $user['id_role']== 1){
+          $_SESSION['role']= 'admin';
+        }else{
+          $_SESSION['role']= 'user';
+        }
       header("Location: page.php");
       exit;
     }
@@ -53,7 +218,9 @@ function registrasi($data){
   $email = htmlspecialchars(strtolower($data['email']));
   $password1= mysqli_real_escape_string($conn, $data['password1']);
   $password2= mysqli_real_escape_string($conn, $data['password2']);
-  $gambar = ($data['gambar']);
+  $gambar = ($data['gambar']) ;
+  $role = ($data['id_role']);
+
 
   // jika password atau apapun kosong
   if(empty($username) || empty($password1) || empty($password2) || empty($email)){
@@ -94,7 +261,7 @@ if(query("SELECT * FROM user WHERE username = '$username'")){
   // insert ke tabel user
   $query = "INSERT INTO user
               VALUES
-            (NULL, '$username', '$email', '$password_baru', '$gambar' )
+            (NULL, '$gambar', '$username', '$email', '$password_baru', '$role'  )
           ";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
@@ -178,13 +345,11 @@ function delete($id)
 
 function cari($keyword) {
   $conn = koneksi();
-  $query = "SELECT * FROM detail
-            WHERE gambar LIKE '%$keyword%' OR
+  $query = "SELECT * FROM detail NATURAL JOIN kategori
+            WHERE judul LIKE '%$keyword%' OR
             judul LIKE '%$keyword%' OR
-            list LIKE '%$keyword%' OR
-            waktu LIKE '%$keyword%' OR
-            isi LIKE '%$keyword%' OR
-            list LIKE '%$keyword%'";
+            kategori LIKE '%$keyword%' OR
+            waktu LIKE '%$keyword%'";
 
   $result = mysqli_query($conn, $query);
   $rows = [];
@@ -237,9 +402,6 @@ function ubah($data)
   $username = htmlspecialchars($data['username']);
   $email = htmlspecialchars($data['email']);
   $gambarLama = ($data['gambarLama']);
-
-
-  
   if (
     $_FILES['gambar']['error'] === 4
 ) {
@@ -259,4 +421,42 @@ function ubah($data)
   return mysqli_affected_rows($conn);
 }
 
+function edit_user($data)
+{
+  $conn = koneksi();
+  
+  $id = $data['id'];
+  
+  // cek apakah user pilih gambar baru atau tidak
+
+  $username = htmlspecialchars($data['username']);
+  $email = htmlspecialchars($data['email']);
+  $password = htmlspecialchars($data['password']);
+  
+  
+  $gambarLama = ($data['gambarLama']);
+  if($_FILES['gambar']['error'] === 4){
+    $gambar = $gambarLama;
+  }else{
+    $gambar = upload();
+  }
+
+  $query = "UPDATE user SET
+            gambar = '$gambar',
+            username = '$username',
+            email = '$email',
+            password = '$password'
+            WHERE id =$id";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+function delete_user($id){
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM user WHERE id= $id") or die (mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+
+}
 ?>
