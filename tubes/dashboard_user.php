@@ -31,6 +31,7 @@ $user = query("SELECT * FROM user");
         </tr>
       </thead>
       <tbody>
+        <form action="" method="GET">
         <?php $i = 1; ?>
         <?php foreach ($user as $s) : ?>
           <tr>
@@ -45,6 +46,7 @@ $user = query("SELECT * FROM user");
           </tr>
           <?php $i++; ?>
         <?php endforeach; ?>
+        </form>
       </tbody>
     </table>
   </div>

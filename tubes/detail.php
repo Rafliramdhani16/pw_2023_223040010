@@ -24,8 +24,8 @@ if(isset($_POST['cari'])){
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="overflow-x-hidden">
-    <!-- <div class="bg">
-    <div class="row justify-content-center mt-3">
+  <div class="bg hide-on-mobile">
+    <div class="row justify-content-center mt-3 hide-on-mobile">
         <?php
         $count = 1; // Variabel hitungan
         foreach ($page as $p) :
@@ -49,7 +49,7 @@ if(isset($_POST['cari'])){
         ?>
     </div>
 </div>
-   </div> -->
+
    <!-- akhir cover -->
    <p class="p1">Recent</p>
 
