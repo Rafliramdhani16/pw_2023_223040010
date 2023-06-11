@@ -24,7 +24,7 @@ $page = query("SELECT * FROM tampilan");
   <body class="overflow-x-hidden">
        <!-- banner -->
        <div class="jumbotron">
-  <img src="asset/baner.jpg" class="img-fluid mt-5" alt="Banner">
+  <img src="asset/bn.jpg" class="img-fluid mt-5" alt="Banner">
 </div>
     <!-- akhir banner -->
 
