@@ -12,7 +12,7 @@ $id = $_GET['id'];
 
 // query mahasiswa berdasarkan id
 $d = query("SELECT * FROM detail NATURAL JOIN kategori WHERE id= $id");
-$kategori = query("SELECT * FROM kategori");
+$kategori = query("SELECT * FROM kategori NATURAL JOIN detail WHERE id_kategori");
 
 
 

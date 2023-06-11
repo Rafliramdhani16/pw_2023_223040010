@@ -43,7 +43,7 @@ if(isset($_POST['login'])){
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Ingat</label>
-    <a href="register.php" style="margin-left:20px;">Registrasi </a>
+    <a href="registrasi.php" style="margin-left:20px;">Registrasi </a>
   </div>
 <?php if(isset($login['error'])):  ?>
 <p><?=$login['pesan']; ?></p>

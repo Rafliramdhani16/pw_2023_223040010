@@ -1,6 +1,11 @@
 <?php 
-require'../functions.php';
-$detail = cari($_GET['keyword']);
+require '../functions.php';
+$keyword = $_GET['keyword'];
+$kategori = $_GET['kategori'];
+
+$detail = cari($keyword, $kategori);
+
+
 ?>
 
 

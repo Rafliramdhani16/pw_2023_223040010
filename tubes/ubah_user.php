@@ -32,32 +32,34 @@ if (isset($_POST['edit_user'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Ubah Data Mahasiswa</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-  <div class="container">
-    <h3 class="mt-3">Form Ubah Data Mahasiswa</h3>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="id" value="<?= $m['id']; ?>">
-      <div class="form-group">
-        <label for="gambar">Gambar:</label>
-        <input type="file" class="form-control" id="gambar" name="gambar" required value="<?= $m['gambar']; ?>">
-      </div>
-      <div class="form-group">
-        <label for="username">Nama:</label>
-        <input type="text" class="form-control" id="username" name="username" autofocus required value="<?= $m['username']; ?>">
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" id="email" name="email" required value="<?= $m['email']; ?>">
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" id="password" name="password" required value="<?= $m['password']; ?>">
-      </div>
-      <button type="submit" class="btn btn-primary" name="edit_user">Ubah Data</button>
-    </form>
-  </div>
+<div class="container">
+  <h3 class="mt-3">Form Ubah Data User</h3>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $m['id']; ?>">
+    <div class="form-group">
+      <label for="gambar">Gambar:</label>
+      <input type="file" class="form-control" id="gambar" name="gambar" required value="<?= $m['gambar']; ?>">
+    </div>
+    <div class="form-group">
+      <label for="username">Nama:</label>
+      <input type="text" class="form-control" id="username" name="username" autofocus required value="<?= $m['username']; ?>">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" name="email" required value="<?= $m['email']; ?>">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password" required value="<?= $m['password']; ?>">
+    </div>
+    <button type="submit" class="btn btn-primary" name="edit_user">Ubah Data</button>
+  </form>
+</div>
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

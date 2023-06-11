@@ -8,8 +8,11 @@ $page = query("SELECT * FROM tampilan ");
 $kategori = query("SELECT * FROM kategori");
 
 if(isset($_POST['cari'])){
-  $detail = cari ($_POST['keyword']);
+  $keyword = $_POST['keyword'];
+  $kategori = $_POST['kategori'];
+  $detail = cari($keyword, $kategori);
 }
+
 
 
 ?>
@@ -68,8 +71,7 @@ if(isset($_POST['cari'])){
       </div>
     </form>
   </div>
-</div>
-
+   </div>
 
 
 

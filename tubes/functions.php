@@ -1,161 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php 
 function koneksi()
 {
@@ -343,20 +186,23 @@ function delete($id)
 }
 
 
-function cari($keyword) {
+function cari($keyword, $kategori) {
   $conn = koneksi();
   $query = "SELECT * FROM detail NATURAL JOIN kategori
             WHERE judul LIKE '%$keyword%' OR
             kategori LIKE '%$keyword%' OR
-            waktu LIKE '%$keyword%'";
+            waktu LIKE '%$keyword%' OR
+            id_kategori LIKE '%$kategori%'";
 
   $result = mysqli_query($conn, $query);
   $rows = [];
   while ($row = mysqli_fetch_assoc($result)) {
-      $rows[] = $row;
+    $rows[] = $row;
   }
   return $rows;
 }
+
+
 function edit($data)
 {
   $conn = koneksi();
@@ -458,6 +304,41 @@ function delete_user($id){
   return mysqli_affected_rows($conn);
 
 }
+function edit_page($data)
+{
+  $conn = koneksi();
+  
+  $id = $data['id'];
+  
+  // cek apakah user pilih gambar baru atau tidak
 
+  $judul = htmlspecialchars($data['judul']);
+  $isi = htmlspecialchars($data['isi']);
+  $isi = htmlspecialchars($data['isi']);
+  $isi2 = htmlspecialchars($data['isi2']);
+  $isi3 = htmlspecialchars($data['isi3']);
+  $isi4 = htmlspecialchars($data['isi4']);
+  $gambarLama = ($data['gambarLama']);
+  if (
+    $_FILES['gambar']['error'] === 4
+) {
+    $gambar = $gambarLama;
+} else {
+    $gambar = upload();
+}
+
+  $query = "UPDATE user SET
+            gambar = '$gambar',
+            judul = '$judul',
+            isi= '$isi',
+            isi2= '$isi2',
+            isi3= '$isi3',
+            isi4= '$isi4',
+            WHERE id =$id";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
 
 ?>

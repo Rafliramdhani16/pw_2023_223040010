@@ -110,6 +110,14 @@ footer {
   border-collapse: collapse;
 }
 
+.size-f{
+  font-size: 40px;
+  color: #151b1f;
+}
+.cetak{
+  float: right;
+  margin-right: 90px;
+}
 th,
 td {
   border: 1px solid #dee2e6;

@@ -1,0 +1,9 @@
+body{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+table{
+    margin: auto;
+}
+tr:nth-child(even){
+    background-color: rgb(200, 223, 223);
+}

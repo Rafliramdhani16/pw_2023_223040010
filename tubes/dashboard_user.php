@@ -13,14 +13,14 @@ $user = query("SELECT * FROM user");
     <title>Ngoding Skuy</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
   </head>
   <body>
     <br>
     <br>
     <div class="container">
-  <a href="tambah.php" class="btn btn-primary text-decoration-none mb-3">Tambah Data Mahasiswa</a>
   <div class="table-responsive">
-    <table class="table">
+    <table border="1" cellpadding="10" cellspacing="0" class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -36,7 +36,7 @@ $user = query("SELECT * FROM user");
         <?php foreach ($user as $s) : ?>
           <tr>
             <th scope="row"><?= $i; ?></th>
-            <td><img src="asset/<?= $s['gambar']; ?>" alt="" width="60"></td>
+            <td><img src="asset/<?= $s['gambar']; ?>" alt="" width="70"></td>
             <td><?= $s['username']; ?></td>
             <td><?= $s['email']; ?></td>
             <td>
@@ -46,6 +46,13 @@ $user = query("SELECT * FROM user");
           </tr>
           <?php $i++; ?>
         <?php endforeach; ?>
+        <div class="cetak">
+          <a href="cetak.php"  target="_blank" class="btn center-icon my-2">
+              <div class="icon-container">
+              <i class="fa-solid fa-file-pdf size-f"></i>
+              </div>
+          </a>
+          </div>
         </form>
       </tbody>
     </table>
