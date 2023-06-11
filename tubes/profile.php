@@ -19,7 +19,7 @@ $user= query("SELECT * FROM user");
 <section class="padding-y bg-light mt-2">
 <div class="container">
     <nav aria-label="breadcrumb">
-<a href="page.php" class="btn">Kembali</a>
+<a href="index.php" class="btn">Kembali</a>
     </nav>
     <div class="row">
     <aside class="col-lg-3 col-xl-3">

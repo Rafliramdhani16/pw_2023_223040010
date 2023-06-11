@@ -3,7 +3,7 @@ session_start();
 // logika ketika kita sudah masuk login dan kita tidak double login
 if(isset($_SESSION['login']))
 {
-  header("Location: page.php");
+  header("Location: index.php");
   exit;
 }
 

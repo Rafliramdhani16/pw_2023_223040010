@@ -45,7 +45,7 @@ function login($data)
         }else{
           $_SESSION['role']= 'user';
         }
-      header("Location: page.php");
+      header("Location: index.php");
       exit;
     }
   }
